@@ -1,0 +1,443 @@
+/* ---------- Tokens ---------- */
+:root {
+  --nav-bg: #187ba3;
+  --nav-border: #4f95b3;
+  --page-bg: #8ec8e3;
+  --overlay: rgba(25, 100, 140, 0.35);
+  --logo: #d0d0d0;
+  --card-bg: rgba(215, 218, 220, 0.88);
+  --field-bg: #d6d9da;
+  --text: #2b2b2b;
+  --link: #0a6ba0;
+  --blue: #2f7fe6;
+
+   /* Replace with your own photo, e.g. url("images/cases.jpg") */
+  --hero-image: url("smart.png");
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--page-bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Navbar (login, sign up, forgot) ---------- */
+.navbar {
+  background: var(--nav-bg);
+  height: 100px;
+  border-bottom: 1px solid var(--nav-border);
+  position: relative;
+  z-index: 2;
+}
+
+.navbar-inner {
+  max-width: 1152px;
+  height: 100%;
+  padding: 0 100px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--logo);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  padding: 60px 40px 100px;
+  background:
+    linear-gradient(var(--overlay), var(--overlay)),
+    var(--hero-image),
+    linear-gradient(115deg, #3d9d5a 0%, #7fb089 18%, #8fb7c8 40%, #8ec8e3 62%, #5b8fc9 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-text {
+  color: #fff;
+  max-width: 420px;
+}
+
+.hero-text h1 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  margin-top: 32px;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.6px;
+}
+
+/* ---------- Card ---------- */
+.login-card {
+  width: 459px;
+  max-width: 100%;
+  background: var(--card-bg);
+  border-radius: 28px;
+  padding: 48px 50px 42px;
+  backdrop-filter: blur(6px);
+  margin-left: 200px;
+}
+
+.login-card h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  padding-left: 13px;
+  margin-bottom: 26px;
+}
+
+.card-outline {
+  border: 2px solid #000;
+  background: rgba(217, 217, 217, 0.93);
+  border-radius: 24px;
+}
+
+/* ---------- Form fields ---------- */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 59px;
+  padding: 0 24px;
+  margin-bottom: 27px;
+  background: var(--field-bg);
+  border-radius: 8px;
+  color: #222;
+  transition: box-shadow 0.15s;
+}
+
+.field:focus-within { box-shadow: 0 0 0 2px var(--blue); }
+
+.field svg { flex: none; }
+
+.field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.field input::placeholder { color: #3a3a3a; }
+
+.field.outlined {
+  background: transparent;
+  border: 1px solid #555;
+}
+
+.field.outlined input::placeholder { color: #444; }
+
+/* Remember me / forgot */
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0 28px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+}
+
+.remember input {
+  position: absolute;
+  opacity: 0;
+}
+
+.remember .box {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #d2d3d4;
+  border: 2px solid transparent;
+  transition: background 0.15s;
+}
+
+.remember input:checked + .box { background: var(--blue); }
+.remember input:focus-visible + .box { border-color: var(--blue); }
+
+.forgot {
+  font-size: 16px;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.forgot:hover, .signup a:hover { text-decoration: underline; }
+
+/* Button */
+.btn-login {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--blue);
+  color: #fff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.btn-login:hover { filter: brightness(1.08); }
+.btn-login:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.signup {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #1d1d1d;
+}
+
+.signup a {
+  margin-left: 6px;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: none;
+}
+
+/* Messages */
+.error {
+  margin: -8px 0 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #fde8e8;
+  color: #9b1c1c;
+  font-size: 14px;
+}
+
+.notice {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #dff3e4;
+  color: #1b5e30;
+  font-size: 14px;
+}
+
+/* ---------- Admin button ---------- */
+.admin-login {
+  position: fixed;
+  left: 24px;
+  bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 50px;
+  padding: 0 28px 0 26px;
+  background: var(--blue);
+  color: #dfe6f0;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 3;
+}
+
+.admin-login:hover { filter: brightness(1.08); }
+
+/* ---------- Forgot password card ---------- */
+.forgot-card { width: 495px; padding: 36px 56px 40px; }
+.forgot-card h2 { padding-left: 0; font-size: 32px; }
+
+.back {
+  display: inline-block;
+  margin-bottom: 28px;
+  font-size: 28px;
+  color: #000;
+  text-decoration: none;
+}
+
+.lead {
+  margin: -8px 0 40px;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+}
+
+.forgot-card .signup a { font-size: 18px; margin: 0; }
+
+/* ---------- Home page ---------- */
+body.shop {
+  background: #d9d9d9;
+  display: block;
+  font-family: "Inter", sans-serif;
+}
+
+.shop-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 18px 40px;
+}
+
+.shop-logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0a5fd8;
+  text-decoration: none;
+}
+
+.shop-nav nav { display: flex; gap: 40px; }
+.shop-nav nav a { color: #000; text-decoration: none; font-size: 15px; }
+
+.search {
+  flex: 0 1 296px;
+  height: 32px;
+  padding: 0 16px;
+  border: 1px solid #666;
+  border-radius: 16px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+}
+
+.icons { margin-left: auto; display: flex; gap: 28px; font-size: 26px; }
+.icons a { text-decoration: none; }
+
+.banner {
+  margin: 8px 40px 0;
+  min-height: 212px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  background: var(--banner) right center / contain no-repeat, linear-gradient(120deg, #0d63c9, #2b97e0);
+  color: #d9d9d9;
+  font-family: "Poppins", sans-serif;
+}
+
+.banner h1 { font-size: 36px; font-weight: 600; }
+.banner p { margin: 8px 0 22px; font-size: 20px; font-weight: 300; }
+
+.shop-now {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid #cfe3f7;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.block { padding: 28px 88px 0; }
+
+.block h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.cats { display: flex; justify-content: space-between; max-width: 960px; }
+
+.cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.cat-box {
+  width: 140px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  background: #c9c9c9;
+  border-radius: 18px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.product {
+  padding: 10px 14px 14px;
+  border: 1px solid #888;
+  border-radius: 22px;
+}
+
+.thumb {
+  height: 98px;
+  margin-bottom: 14px;
+  display: grid;
+  place-items: center;
+  background: #c4c4c4;
+}
+
+.thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.product h3 { font-size: 14px; font-weight: 500; }
+.meta { display: flex; justify-content: space-between; margin: 2px 0 10px; font-size: 14px; }
+.meta span { color: #555; }
+
+.view {
+  display: block;
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 6px;
+  background: #2476d2;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .hero { flex-direction: column; gap: 40px; padding: 48px 20px 110px; }
+  .hero-text { text-align: center; }
+  .navbar-inner { padding: 0 24px; }
+}
+
+@media (max-width: 900px) {
+  .shop-nav { flex-wrap: wrap; gap: 16px; }
+  .shop-nav nav { gap: 20px; }
+  .cats { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .block { padding: 24px 20px 0; }
+  .banner { margin: 8px 20px 0; }
+  .forgot-card { padding: 28px 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 { font-size: 34px; }
+  .hero-text p { font-size: 20px; }
+  .login-card { padding: 36px 24px 32px; }
+  .options { flex-wrap: wrap; gap: 12px; }
+}
